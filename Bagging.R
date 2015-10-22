@@ -6,7 +6,8 @@ head(ozone)
 ll <- matrix(NA,nrow=10,ncol=155)
 for(i in 1:10){
   ss <- sample(1:dim(ozone)[1],replace=T)
-  ozone0 <- ozone[ss,];ozone0 <- ozone0[order(opzone0$ozone),]
+  ozone0 <- ozone[ss,]
+  ozone0 <- ozone0[order(opzone0$ozone),]
   loess0 <- loess(temperature ~ ozone,data=ozone0,span=0.2)
   ll[i,] <- predict(loess0,newdata=data,frame(ozone=1:155))
 }
