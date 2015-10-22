@@ -27,3 +27,7 @@ treebag <- bag(predictors, temperture, B=10,
                bagControl = bagControl(fit = ctreeBag$fit,
                                        predict = ctreeBag$pred,
                                        aggregate = ctreeBag$aggregate))
+## Example of custom bagging (continued)
+plot(ozone$ozone, temperature, col='lightgrey',pch=19)
+points(ozone$ozone, predict(treebag$fits[[1]]$fit,predictors),pch=19,col="red")
+points(ozone$ozone, predict(treebag,predictors),pch=19,col="blue")
