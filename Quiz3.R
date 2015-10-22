@@ -25,3 +25,7 @@ modelFit$finalModel
 plot(modFit$finalModel, uniform=TRUE, main="Classification Tree")
 text(modFit$finalModel, use.n=TRUE, all=TRUE, cex=.8)
 
+#Q2
+## If K is small in a K-fold cross validation is the bias in the estimate of out-of-sample (test set) accuracy smaller or bigger? 
+## If K is small is the variance in the estimate of out-of-sample (test set) accuracy smaller or bigger. 
+## Is K large or small in leave one out cross validation? 
