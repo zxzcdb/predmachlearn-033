@@ -68,3 +68,21 @@ missClass(testSA$chd, prediction1)
 ## What is the misclassification rate on the test set? 
 missClass(trainSA$chd, prediction2)
 ## Training Set: 0.27
+
+## Q4
+## Load the vowel.train and vowel.test data sets:
+library(ElemStatLearn)
+data(vowel.train)
+data(vowel.test) 
+## Set the variable y to be a factor variable in both the training and test set. 
+set.seed(33833)
+## Then set the seed to 33833. Fit a random forest predictor relating the factor variable y to the remaining variables. 
+## Read about variable importance in random forests here: http://www.stat.berkeley.edu/~breiman/RandomForests/cc_home.htm#ooberr 
+## The caret package uses by defualt the Gini importance. 
+## Calculate the variable importance using the varImp function in the caret package. 
+## What is the order of variable importance?
+set.seed(33833)
+mod <- train(y~., data=vowel.train,method="rf",prox=TRUE,importance=TRUE)
+varImp(mod)
+# The order of the variables is:
+# x.2, x.1, x.5, x.6, x.8, x.4, x.9, x.3, x.7,x.10
