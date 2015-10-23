@@ -29,3 +29,42 @@ text(modFit$finalModel, use.n=TRUE, all=TRUE, cex=.8)
 ## If K is small in a K-fold cross validation is the bias in the estimate of out-of-sample (test set) accuracy smaller or bigger? 
 ## If K is small is the variance in the estimate of out-of-sample (test set) accuracy smaller or bigger. 
 ## Is K large or small in leave one out cross validation? 
+
+# Q3
+## Load the olive oil data using the commands: 
+library(pgmm)
+data(olive)
+olive = olive[,-1]
+## These data contain information on 572 different Italian olive oils from multiple regions in Italy. 
+## Fit a classification tree where Area is the outcome variable. 
+## Then predict the value of area for the following data frame using the tree command with all defaults
+newdata = as.data.frame(t(colMeans(olive)))
+## What is the resulting prediction? Is the resulting prediction strange? Why or why not?
+modelFit <- train(Area~.,data=olive,method="rpart")
+pred <- predict(modelFit,newdata)
+pred
+## 2.783. It is strange because Area should be a qualitative variable - 
+## but tree is reporting the average value of Area as a numeric variable in the leaf predicted for newdata
+
+#Q4
+## Load the South Africa Heart Disease Data and create training and test sets with the following code:
+library(ElemStatLearn)
+data(SAheart)
+set.seed(8484)
+train = sample(1:dim(SAheart)[1],size=dim(SAheart)[1]/2,replace=F)
+trainSA = SAheart[train,]
+testSA = SAheart[-train,]
+## Then set the seed to 13234 and fit a logistic regression model 
+## (method="glm", be sure to specify family="binomial") with Coronary Heart Disease (chd) as the outcome and age at onset, 
+## current alcohol consumption, obesity levels, cumulative tabacco, type-A behavior, 
+## and low density lipoprotein cholesterol as predictors. 
+set.seed(13234)
+modelFit <- train(chd~age+alcohol+obesity+tobacco+typea+ldl,method="glm",family="binomial",data=trainSA)
+## Calculate the misclassification rate for your model using this function and a prediction on the "response" scale:
+missClass = function(values,prediction){sum(((prediction > 0.5)*1) != values)/length(values)}
+## What is the misclassification rate on the training set? 
+missClass(testSA$chd, prediction1)
+## Test Set Misclassification: 0.31
+## What is the misclassification rate on the test set? 
+missClass(trainSA$chd, prediction2)
+## Training Set: 0.27
