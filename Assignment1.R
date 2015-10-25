@@ -26,8 +26,8 @@ train_url<-"https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv
 test_url<-"https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
 download.file(train_url,destfile="~/training.csv")
 download.file(test_url,destfile="~/testing.csv")
-train <- read.csv("~/training.csv")
-test <- read.csv("~/testing.csv")
+train <- read.csv("~/training.csv", na.strings=c("NA","#DIV/0!",""))
+test <- read.csv("~/testing.csv", na.strings=c("NA","#DIV/0!",""))
 
 train <- train[,colSums(is.na(train))==0]
 test <- test[,colSums(is.na(test))==0]
