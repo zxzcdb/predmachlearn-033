@@ -62,9 +62,9 @@ count / nrow(adata)
 
 ## [1] 0.657
 
-Accuracy for combined method is 0.657.
+## Accuracy for combined method is 0.657.
 
-RF Accuracy = .60606 GBM Accuracy = .530303 Combined Accuracy = .6622 (manual calc) or .699 (combined accuracy model) depending which way you use to calculate
+## RF Accuracy = .60606 GBM Accuracy = .530303 Combined Accuracy = .6622 (manual calc) or .699 (combined accuracy model) depending which way you use to calculate
 
 ## 2.) Load the Alzheimer’s data using the following commands
 
